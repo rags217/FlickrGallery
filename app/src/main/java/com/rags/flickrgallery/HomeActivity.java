@@ -3,18 +3,25 @@ package com.rags.flickrgallery;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
-import java.util.ArrayList;
+import com.rags.flickrgallery.com.rags.flickrgallery.api.ListDownloadTask;
+import com.rags.flickrgallery.model.Item;
+
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements HomeView {
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,15 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mRecyclerView = findViewById(R.id.my_recycler_view);
+
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        new ListDownloadTask(this).execute();
     }
 
     @Override
@@ -46,8 +62,9 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     }
 
     @Override
-    public void showImages(ArrayList<Item> trainTimes) {
-
+    public void showList(List<Item> trainTimes) {
+        mRecyclerView.setAdapter(new HomeAdapter(trainTimes));
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override

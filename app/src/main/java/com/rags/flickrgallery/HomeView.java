@@ -1,10 +1,12 @@
 package com.rags.flickrgallery;
 
-import java.util.ArrayList;
+import com.rags.flickrgallery.model.Item;
+
+import java.util.List;
 
 public interface HomeView {
 
-    void showImages(ArrayList<Item> trainTimes);
+    void showList(List<Item> items);
     void showError(int resID);
     void showNothing();
 
