@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Flickr Gallery</string>
+    <string name="title_activity_home">Flickr Gallery</string>
+    <string name="search_by_tag">Search By Tag</string>
 </resources>
