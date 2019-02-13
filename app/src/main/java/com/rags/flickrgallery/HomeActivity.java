@@ -62,8 +62,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
     }
 
     @Override
-    public void showList(List<Item> trainTimes) {
-        mRecyclerView.setAdapter(new HomeAdapter(trainTimes));
+    public void showList(List<Item> items) {
+        mRecyclerView.setAdapter(new HomeAdapter(items));
         mRecyclerView.setVisibility(View.VISIBLE);
     }
 

@@ -19,7 +19,7 @@ public class ListDownloadTask extends AsyncTask<Void, Integer, FlickrResponse> {
 
     @Override
     protected FlickrResponse doInBackground(Void... v) {
-        return FlickrController.downloadTrainTimes(new OkHttpClient());
+        return FlickrController.downloadItems(new OkHttpClient());
 
     }
 

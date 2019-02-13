@@ -14,5 +14,5 @@ public interface FlickrAPI {
 
     @NonNull
     @GET(SERVER_ACTION)
-    Call<ItemsList> loadTrainTimes();
+    Call<ItemsList> loadItems();
 }

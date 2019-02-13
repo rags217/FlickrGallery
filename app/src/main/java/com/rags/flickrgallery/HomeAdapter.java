@@ -23,16 +23,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         TextView mTitle;
         TextView mAuthor;
         TextView mPublished;
-        TextView mLink;
-        TextView mM;
 
         ViewHolder(View v, Context context) {
             super(v);
             mTitle = v.findViewById(R.id.title);
             mAuthor = v.findViewById(R.id.author);
             mPublished = v.findViewById(R.id.published);
-            mLink = v.findViewById(R.id.link);
-            mM = v.findViewById(R.id.m);
             this.context = context;
         }
     }
@@ -55,8 +51,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.mTitle.setText(it.getTitle());
         holder.mAuthor.setText(it.getAuthor());
         holder.mPublished.setText(it.getPublished());
-        holder.mLink.setText(it.getLink());
-        holder.mM.setText(it.getMedia().getM());
     }
 
     @Override

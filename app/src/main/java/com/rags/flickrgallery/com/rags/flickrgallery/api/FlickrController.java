@@ -20,7 +20,7 @@ public class FlickrController {
 
     String str = "";
 
-    public static FlickrResponse downloadTrainTimes(OkHttpClient client) {
+    public static FlickrResponse downloadItems(OkHttpClient client) {
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -32,21 +32,21 @@ public class FlickrController {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        FlickrAPI trainTimesAPI = retrofit.create(FlickrAPI.class);
+        FlickrAPI itemsAPI = retrofit.create(FlickrAPI.class);
         Call<ItemsList> call;
-        Response<ItemsList> trainTimesResponse;
+        Response<ItemsList> itemsResponse;
         FlickrResponse response = new FlickrResponse();
         try {
-            call = trainTimesAPI.loadTrainTimes();
-            trainTimesResponse = call.execute();
+            call = itemsAPI.loadItems();
+            itemsResponse = call.execute();
 
 
-            if(trainTimesResponse.code() != 200) {
+            if(itemsResponse.code() != 200) {
                 response.setErrorMessageResId(R.string.network_error);
                 return response;
             }
 
-            ItemsList itemsList = trainTimesResponse.body();
+            ItemsList itemsList = itemsResponse.body();
             if(itemsList == null) {
                 response.setErrorMessageResId(R.string.data_error);
                 return response;
