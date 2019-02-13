@@ -12,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
-public class HomeActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class HomeActivity extends AppCompatActivity implements HomeView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,4 +45,18 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void showImages(ArrayList<Item> trainTimes) {
+
+    }
+
+    @Override
+    public void showError(int resID) {
+
+    }
+
+    @Override
+    public void showNothing() {
+
+    }
 }
