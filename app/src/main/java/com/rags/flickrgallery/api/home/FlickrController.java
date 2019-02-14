@@ -2,6 +2,7 @@ package com.rags.flickrgallery.api.home;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.rags.flickrgallery.R;
 import com.rags.flickrgallery.model.home.ItemsList;
 
@@ -65,6 +66,9 @@ public class FlickrController {
             response.setErrorMessageResId(R.string.data_error);
             return response;
         } catch (NullPointerException ex) {
+            response.setErrorMessageResId(R.string.data_error);
+            return response;
+        } catch (JsonSyntaxException ex) {
             response.setErrorMessageResId(R.string.data_error);
             return response;
         } catch (Exception ex) {
