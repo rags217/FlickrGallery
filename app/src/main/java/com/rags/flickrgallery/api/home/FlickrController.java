@@ -59,7 +59,7 @@ public class FlickrController {
                 return response;
             }
         } catch (IOException ex) {      //If there is an exception while attempting to download, send appropriate error message to the presenter
-            response.setErrorMessageResId(R.string.network_error);
+            response.setErrorMessageResId(R.string.data_error);
             return response;
         } catch (IllegalStateException ex) {
             response.setErrorMessageResId(R.string.data_error);

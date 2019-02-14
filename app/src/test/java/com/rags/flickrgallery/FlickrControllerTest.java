@@ -24,5 +24,12 @@ public class FlickrControllerTest {
         assertEquals(response.getErrorMessageResId(), R.string.data_error);
     }
 
+    @Test
+    public void testEmptyResponse() throws Exception {
+        FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(2)).build(), "");
+        assertFalse(response.hasItemsResponse());
+        assertEquals(response.getErrorMessageResId(), R.string.data_error);
+    }
+
 
 }
