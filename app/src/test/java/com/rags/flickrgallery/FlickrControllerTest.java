@@ -25,10 +25,31 @@ public class FlickrControllerTest {
     }
 
     @Test
-    public void testEmptyResponse() throws Exception {
+    public void testBlankResponse() throws Exception {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(2)).build(), "");
         assertFalse(response.hasItemsResponse());
         assertEquals(response.getErrorMessageResId(), R.string.data_error);
+    }
+
+    @Test
+    public void testBadResponse() throws Exception {
+        FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(3)).build(), "");
+        assertFalse(response.hasItemsResponse());
+        assertEquals(response.getErrorMessageResId(), R.string.data_error);
+    }
+
+    @Test
+    public void testEmptyResponse() throws Exception {
+        FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(4)).build(), "");
+        assertFalse(response.hasItemsResponse());
+        assertEquals(response.getErrorMessageResId(), R.string.data_error);
+    }
+
+    @Test
+    public void testEmptyListResponse() throws Exception {
+        FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(5)).build(), "");
+        assertTrue(response.hasItemsResponse());
+        assertEquals(response.getItems().size(), 0);
     }
 
 

@@ -50,7 +50,7 @@ public class FlickrController {
             }
 
             ItemsList itemsList = itemsResponse.body();
-            if(itemsList == null) {     //If no data is available to download, send appropriate message to the presenter
+            if(itemsList == null || itemsList.getItems() == null ) {     //If no data is available to download, send appropriate message to the presenter
                 response.setErrorMessageResId(R.string.data_error);
                 return response;
             } else {    //If data is downloaded successfully,, send data to the presenter
