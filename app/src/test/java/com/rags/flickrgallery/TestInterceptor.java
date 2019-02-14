@@ -21,6 +21,7 @@ public class TestInterceptor implements Interceptor {
     private String response3 = "asdasdasd";
     private String response4 = "{}";
     private String response5 = "{\"title\": \"Uploads from everyone\",\"description\": \"Uploads from everyone\", \"items\":[]}";
+    private String response6 = "{\"title\": \"Uploads\",\"description\": \"Uploads\", \"items\":[{\"title\": \"Test Title\", \"author\": \"Test Author\", \"published\": \"Test Published On\", \"link\": \"Test Link\", \"media\": {\"m\": \"Test Media Link\"}}]}";
 
     TestInterceptor(int testType) {
         this.testType = testType;
@@ -46,6 +47,14 @@ public class TestInterceptor implements Interceptor {
         if(testType == 5)
             responseString = response5;
 
+        if(testType == 6)
+            responseString = response6;
+
+        if(testType == 7)
+            responseCode = 404;
+
+        if(testType == 8)
+            responseCode = 123;
 
         return new Response.Builder()
                 .code(responseCode)

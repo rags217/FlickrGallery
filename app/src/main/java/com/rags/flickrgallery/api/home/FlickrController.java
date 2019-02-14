@@ -46,7 +46,10 @@ public class FlickrController {
 
 
             if(itemsResponse.code() != 200) { // If unable to download data, send appropriate error message to the presenter
-                response.setErrorMessageResId(R.string.network_error);
+                if(itemsResponse.code() == 404 || itemsResponse.code() == 0)
+                    response.setErrorMessageResId(R.string.network_error);
+                else
+                    response.setErrorMessageResId(R.string.unknown_error);
                 return response;
             }
 
