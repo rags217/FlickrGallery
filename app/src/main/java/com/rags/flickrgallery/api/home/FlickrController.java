@@ -64,6 +64,9 @@ public class FlickrController {
         } catch (IllegalStateException ex) {
             response.setErrorMessageResId(R.string.data_error);
             return response;
+        } catch (NullPointerException ex) {
+            response.setErrorMessageResId(R.string.data_error);
+            return response;
         } catch (Exception ex) {
             response.setErrorMessageResId(R.string.unknown_error);
             return response;
