@@ -8,10 +8,6 @@ import okhttp3.Protocol;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
-/**
- * Created by development on 25/03/2018.
- */
-
 public class TestInterceptor implements Interceptor {
 
     private int testType;

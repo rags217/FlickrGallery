@@ -5,6 +5,9 @@ import com.rags.flickrgallery.api.home.FlickrResponse;
 import com.rags.flickrgallery.model.home.Item;
 
 import org.junit.Test;
+
+import java.io.IOException;
+
 import okhttp3.OkHttpClient;
 
 import static org.junit.Assert.*;
@@ -19,42 +22,42 @@ public class FlickrControllerTest {
     }
 
     @Test
-    public void testNullResponse() {
+    public void testNullResponse()  throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(1)).build(), "");
         assertFalse(response.hasItemsResponse());
         assertEquals(response.getErrorMessageResId(), R.string.data_error);
     }
 
     @Test
-    public void testBlankResponse() {
+    public void testBlankResponse()  throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(2)).build(), "");
         assertFalse(response.hasItemsResponse());
         assertEquals(response.getErrorMessageResId(), R.string.data_error);
     }
 
     @Test
-    public void testBadResponse() {
+    public void testBadResponse()  throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(3)).build(), "");
         assertFalse(response.hasItemsResponse());
         assertEquals(response.getErrorMessageResId(), R.string.data_error);
     }
 
     @Test
-    public void testEmptyResponse() {
+    public void testEmptyResponse()  throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(4)).build(), "");
         assertFalse(response.hasItemsResponse());
         assertEquals(response.getErrorMessageResId(), R.string.data_error);
     }
 
     @Test
-    public void testEmptyListResponse() {
+    public void testEmptyListResponse()  throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(5)).build(), "");
         assertTrue(response.hasItemsResponse());
         assertEquals(response.getItems().size(), 0);
     }
 
     @Test
-    public void testResponseParsing() {
+    public void testResponseParsing()  throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(6)).build(), "");
         Item i = response.getItems().get(0);
         assertEquals(i.getTitle(), "Test Title");
@@ -65,14 +68,14 @@ public class FlickrControllerTest {
     }
 
     @Test
-    public void testNetworkError() {
+    public void testNetworkError() throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(7)).build(), "");
         assertFalse(response.hasItemsResponse());
         assertEquals(response.getErrorMessageResId(), R.string.network_error);
     }
 
     @Test
-    public void testUnknownError() {
+    public void testUnknownError()  throws IOException {
         FlickrResponse response = FlickrController.downloadItems(new OkHttpClient.Builder().addInterceptor(new TestInterceptor(8)).build(), "");
         assertFalse(response.hasItemsResponse());
         assertEquals(response.getErrorMessageResId(), R.string.unknown_error);
