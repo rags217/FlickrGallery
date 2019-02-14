@@ -39,6 +39,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
 
     private boolean showSearchBar = true;
 
+    private boolean requiresRefresh; // Flag that tells the app to refresh on resume if data was not populated on previous onCreate
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         progressBar = findViewById(R.id.progress_bar);
 
         handleIntent(getIntent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(requiresRefresh)
+            handleIntent(getIntent());
     }
 
     //Handle the intent and decide if you have to fetch images feeds with or without tag
@@ -99,6 +108,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         galleryList.setVisibility(View.VISIBLE);
         noImageToShow.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
+        requiresRefresh = true; //Set this flag to false as now it has got data and thus avoiding unnecessary refresh
     }
 
     @Override
@@ -106,6 +116,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         noImageToShow.setText(resID);
         noImageToShow.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
+        requiresRefresh = true; //Set this flag to true so that the app will try to download the data again on resume since it has not got any data
     }
 
     @Override
@@ -113,5 +124,6 @@ public class HomeActivity extends AppCompatActivity implements HomeView {
         noImageToShow.setText(R.string.empty_list);
         noImageToShow.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
+        requiresRefresh = true; //Set this flag to true so that the app will try to download the data again on resume since it has not got any data
     }
 }
