@@ -5,4 +5,6 @@
     <color name="colorAccent">#0262DC</color>
     <color name="white">#fff</color>
     <color name="list_bg_gray">#EEE</color>
+    <color name="black">#000</color>
+    <color name="gray">#bbb</color>
 </resources>

@@ -1,8 +1,24 @@
 <resources>
     <string name="app_name">Flickr Gallery</string>
+    <string name="mail_body">I came across this interesting image in Flickr. Hope you like it.</string>
     <string name="title_activity_home">Flickr Gallery</string>
     <string name="search_by_tag">Search By Tag</string>
-    <string name="network_error">Network is not available. Please check your internet connection</string>
-    <string name="data_error">There is no information available to show</string>
-    <string name="unknown_error">An unknown error occured while trying to download the data</string>
+    <string name="network_error">Please check your internet and try again.</string>
+    <string name="data_error">No images available to show</string>
+    <string name="unknown_error">An unknown error occurred while trying to download the data</string>
+    <string name="search_result_for">Search Result For :</string>
+    <string name="empty_list">No images to show</string>
+    <string name="action_save">Save</string>
+    <string name="action_save_message">Save image to the phone</string>
+    <string name="cancel">Cancel</string>
+    <string name="share_via_email">Share via email</string>
+    <string name="view_in_browser">View image in browser</string>
+    <string name="ok">OK</string>
+    <string name="published_on">Published on:</string>
+    <string name="unknown_publish_date">Unknown publish date</string>
+    <string name="unknown_author">Unknown author</string>
+    <string name="author">Author:</string>
+    <string name="action_share">Share</string>
+    <string name="action_share_message">Share image via email</string>
+    <string name="email_subject">Flickr Gallery</string>
 </resources>
